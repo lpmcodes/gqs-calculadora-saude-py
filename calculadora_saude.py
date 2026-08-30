@@ -62,8 +62,8 @@ def main():
 
         elif opcao == "4":
             print("Encerrando o sistema...")
-            # Bug 7: Ausência do break para sair do loop infinito
             print("Obrigado por usar nosso sistema!")
+            break
 
         else:
             print("Opção inválida! Tente novamente.")
