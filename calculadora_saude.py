@@ -1,6 +1,8 @@
 # calculadora_saude.py
 
 def calcular_imc(peso, altura):
+    if altura <= 0:
+        raise ValueError("A altura deve ser maior que zero.")
     # IMC = peso dividido pela altura ao quadrado
     imc = peso / (altura ** 2)
     return imc
@@ -26,6 +28,22 @@ def calcular_frequencia_cardiaca_maxima(idade):
     fc_max = 220 - idade
     return fc_max
 
+def ler_numero(mensagem, tipo=float):
+    # Pergunta de novo enquanto o usuário não digitar um número válido
+    while True:
+        entrada = input(mensagem).strip().replace(",", ".")
+        try:
+            valor = tipo(entrada)
+        except ValueError:
+            print("Entrada inválida! Digite um número.")
+            continue
+
+        if valor <= 0:
+            print("Valor inválido! Digite um número maior que zero.")
+            continue
+
+        return valor
+
 def menu():
     print("\n" + "="*30)
     print("  SISTEMA DE SAÚDE E BEM-ESTAR  ")
@@ -44,19 +62,19 @@ def main():
         opcao = menu()
 
         if opcao == "1":
-            peso = float(input("Digite seu peso (kg): "))
-            altura = float(input("Digite sua altura (m): "))
+            peso = ler_numero("Digite seu peso (kg): ")
+            altura = ler_numero("Digite sua altura (m): ")
             imc = calcular_imc(peso, altura)
             print(f"Seu IMC é: {imc:.2f}")
             print(f"Classificação: {classificar_imc(imc)}")
 
         elif opcao == "2":
-            peso = float(input("Digite seu peso (kg): "))
+            peso = ler_numero("Digite seu peso (kg): ")
             qtd_agua = calcular_agua_diaria(peso)
             print(f"Sua meta diária de água é: {qtd_agua:.2f} Litros")
 
         elif opcao == "3":
-            idade = int(input("Digite sua idade: "))
+            idade = ler_numero("Digite sua idade: ", tipo=int)
             fc = calcular_frequencia_cardiaca_maxima(idade)
             print(f"Sua Frequência Cardíaca Máxima estimada é: {fc} bpm")
 
