@@ -22,8 +22,8 @@ def calcular_agua_diaria(peso):
     return litros
 
 def calcular_frequencia_cardiaca_maxima(idade):
-    # Bug 4: Somando a idade em vez de subtrair de 220
-    fc_max = 220 + idade
+    # Fórmula: 220 menos a idade
+    fc_max = 220 - idade
     return fc_max
 
 def menu():
