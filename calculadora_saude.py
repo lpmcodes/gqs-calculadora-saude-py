@@ -6,14 +6,14 @@ def calcular_imc(peso, altura):
     return imc
 
 def classificar_imc(imc):
-    # Bug 2: Faixas de classificação sobrepostas e sem retorno para valores limites
+    # Faixas contínuas: todo valor de IMC cai em alguma classificação
     if imc < 18.5:
         return "Abaixo do peso"
-    elif imc > 18.5 and imc < 24.9:
+    elif imc < 25.0:
         return "Peso normal"
-    elif imc > 25.0 and imc < 29.9:
+    elif imc < 30.0:
         return "Sobrepeso"
-    elif imc > 30.0:
+    else:
         return "Obesidade"
 
 def calcular_agua_diaria(peso):
