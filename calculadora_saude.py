@@ -17,8 +17,8 @@ def classificar_imc(imc):
         return "Obesidade"
 
 def calcular_agua_diaria(peso):
-    # Bug 3: Fórmula dividindo o peso em vez de multiplicar por 35ml
-    litros = (peso / 35)
+    # 35 ml de água por kg de peso, convertidos de ml para litros
+    litros = (peso * 35) / 1000
     return litros
 
 def calcular_frequencia_cardiaca_maxima(idade):
