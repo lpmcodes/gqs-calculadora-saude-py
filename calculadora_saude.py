@@ -34,38 +34,37 @@ def menu():
     print("2. Calcular Recomendação de Água")
     print("3. Calcular Frequência Cardíaca Máxima")
     print("4. Sair")
-    
-    # Bug 5: input() retorna string, mas o código não trata a conversão no menu
-    opcao = input("Escolha uma opção (1-4): ")
+
+    # input() sempre devolve texto, entao usamos strip() e comparamos com strings no main()
+    opcao = input("Escolha uma opção (1-4): ").strip()
     return opcao
 
 def main():
     while True:
         opcao = menu()
-        
-        # Bug 6: As comparações abaixo falharão devido ao tipo de dado da 'opcao'
-        if opcao == 1:
+
+        if opcao == "1":
             peso = float(input("Digite seu peso (kg): "))
             altura = float(input("Digite sua altura (m): "))
             imc = calcular_imc(peso, altura)
             print(f"Seu IMC é: {imc:.2f}")
             print(f"Classificação: {classificar_imc(imc)}")
-            
-        elif opcao == 2:
+
+        elif opcao == "2":
             peso = float(input("Digite seu peso (kg): "))
             qtd_agua = calcular_agua_diaria(peso)
             print(f"Sua meta diária de água é: {qtd_agua:.2f} Litros")
-            
-        elif opcao == 3:
+
+        elif opcao == "3":
             idade = int(input("Digite sua idade: "))
             fc = calcular_frequencia_cardiaca_maxima(idade)
             print(f"Sua Frequência Cardíaca Máxima estimada é: {fc} bpm")
-            
-        elif opcao == 4:
+
+        elif opcao == "4":
             print("Encerrando o sistema...")
             # Bug 7: Ausência do break para sair do loop infinito
             print("Obrigado por usar nosso sistema!")
-            
+
         else:
             print("Opção inválida! Tente novamente.")
 
