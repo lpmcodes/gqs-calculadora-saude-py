@@ -1,8 +1,8 @@
 # calculadora_saude.py
 
 def calcular_imc(peso, altura):
-    # Bug 1: Multiplicação em vez de potenciação no cálculo do IMC
-    imc = peso / (altura * 2)
+    # IMC = peso dividido pela altura ao quadrado
+    imc = peso / (altura ** 2)
     return imc
 
 def classificar_imc(imc):
